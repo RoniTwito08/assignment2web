@@ -1,7 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-import mongoose from 'mongoose'; 
+import mongoose from 'mongoose';
+import userRouter from './routes/user_routes';
+
 
 
 dotenv.config();
@@ -23,5 +25,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/api/auth', userRouter);
 
 export default app;
