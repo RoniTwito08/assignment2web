@@ -144,8 +144,8 @@ describe("Auth Tests", () => {
         await new Promise((r) => setTimeout(r, 5000));
 
         const response2 = await request(app).post(baseUrl + "/refresh").send({refreshToken: testUser.refreshToken});
-        expect(response3.status).toBe(200);
-        testUser.accessToken = response3.body.accessToken;
+        expect(response2.status).toBe(200);
+        testUser.accessToken = response2.body.accessToken;
 
        
     });
