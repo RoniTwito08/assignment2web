@@ -21,9 +21,10 @@ type UserType = UserInterface & {
 
   
 const testUser: UserType = {
+    name: "testuser",
     email: "test@user.com",
     password: "testpassword",
-    name: "testuser"
+    
 }
   
 
@@ -147,6 +148,13 @@ describe("Auth Tests", () => {
         expect(response2.status).toBe(200);
         testUser.accessToken = response2.body.accessToken;
 
+      <<<<<<< controllerAndRoutes
+        
+=======
        
+
+        
+        
+        >>>>>>> main
     });
 });
