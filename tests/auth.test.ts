@@ -148,6 +148,13 @@ describe("Auth Tests", () => {
         expect(response2.status).toBe(200);
         testUser.accessToken = response2.body.accessToken;
 
+      <<<<<<< controllerAndRoutes
         
+=======
+       
+
+        
+        
+        >>>>>>> main
     });
 });
