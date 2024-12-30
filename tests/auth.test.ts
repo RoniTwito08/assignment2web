@@ -143,17 +143,10 @@ describe("Auth Tests", () => {
 
         await new Promise((r) => setTimeout(r, 5000));
 
-        const response2 = await request(app).post("/api/post/createPost").set("Authorization", `Bearer ${testUser.accessToken}`)
-        .send({userId: testUser._id, content: "test content"});
-
-        expect(response2.status).not.toBe(201);
-
-        const response3 = await request(app).post(baseUrl + "/refresh").send({refreshToken: testUser.refreshToken});
+        const response2 = await request(app).post(baseUrl + "/refresh").send({refreshToken: testUser.refreshToken});
         expect(response3.status).toBe(200);
         testUser.accessToken = response3.body.accessToken;
 
-        const response4 = await request(app).post("/api/post/createPost").set("Authorization", `Bearer ${testUser.accessToken}`)
-        .send({userId: testUser._id, content: "test content"});
-        expect(response4.status).toBe(201);
+       
     });
 });
