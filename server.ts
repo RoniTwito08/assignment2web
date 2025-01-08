@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import userRouter from './routes/user_routes';
 import postRouter from './routes/post_routes';
+import comenntRouter from './routes/comments_routes';
 
 
 
@@ -28,5 +29,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api/auth', userRouter);
 app.use('/api/post', postRouter);
+app.use('/api/comment', comenntRouter);
 
 export default app;
