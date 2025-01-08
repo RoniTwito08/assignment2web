@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import userRouter from './routes/user_routes';
+import postRouter from './routes/post_routes';
 
 
 
@@ -26,5 +27,6 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api/auth', userRouter);
+app.use('/api/post', postRouter);
 
 export default app;
