@@ -5,7 +5,8 @@ import mongoose from 'mongoose';
 import userRouter from './routes/user_routes';
 import postRouter from './routes/post_routes';
 import comenntRouter from './routes/comments_routes';
-
+import swaggerJsDoc from "swagger-jsdoc";
+import swaggerUI from "swagger-ui-express";
 
 
 dotenv.config();
@@ -30,5 +31,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api/auth', userRouter);
 app.use('/api/post', postRouter);
 app.use('/api/comment', comenntRouter);
+
+const swaggerOptions = {
+  definition: {
+      openapi: "3.0.0",
+      info: {
+          title: "Auth API",
+          version: "1.0.0",
+          description: "User authentication API"
+      },
+      servers: [{ url: "http://localhost:3000" }]
+  },
+  apis: ["./routes/*.ts"]
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 export default app;
